@@ -1,0 +1,43 @@
+# git clone https://git.openstack.org/openstack-dev/devstack
+
+DATABASE_PASSWORD=admin
+RABBIT_PASSWORD=admin
+SERVICE_TOKEN=admin
+SERVICE_PASSWORD=admin
+ADMIN_PASSWORD=admin
+
+KEYSTONE_TOKEN_FORMAT=UUID
+
+RECLONE=yes
+DEBUG=True
+
+# Enable Rally
+enable_service rally
+
+# Enable the ceilometer metering services
+enable_service ceilometer-acompute ceilometer-acentral ceilometer-anotification ceilometer-collector
+# Enable the ceilometer alarming services
+enable_service ceilometer-alarm-evaluator,ceilometer-alarm-notifier
+# Enable the ceilometer api services
+enable_service ceilometer-api
+
+
+# Enable Neutron
+disable_service n-net
+enable_service q-svc
+enable_service q-agt
+enable_service q-dhcp
+enable_service q-l3
+enable_service q-meta
+enable_service tempest
+enable_service q-lbaas
+enable_service neutron
+
+
+
+#ENABLED_SERVICES=rabbit,mysql,key
+#KEYSTONE_CATALOG_BACKEND=sql
+
+
+# Resolve permission denied issue
+# sudo usermod -aG vboxsf $(whoami)
