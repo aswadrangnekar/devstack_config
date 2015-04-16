@@ -8,8 +8,12 @@ ADMIN_PASSWORD=admin
 
 KEYSTONE_TOKEN_FORMAT=UUID
 
+# Repo related changes 
 RECLONE=yes
-DEBUG=True
+
+# Log
+SCREEN_LOGDIR=/opt/stack/logs    # logs screen logs to /opt/stack/logs
+DEBUG=True                       # enables/disables debug messages
 
 # Enable Rally
 enable_service rally
